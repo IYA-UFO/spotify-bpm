@@ -36,7 +36,7 @@ export default () => {
 
   return (
     <Wrapper>
-      <Title>アーティストを入力</Title>
+      <Title>アーティストを入力!</Title>
       <Form onSubmit={handleSubmit}>
         <Input type="text" value={query} onChange={handleChange} />
         <Submit type="submit" value="Submit" />

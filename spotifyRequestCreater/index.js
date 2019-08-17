@@ -5,7 +5,7 @@ import fetchAccessToken from './fetchAccessToken';
 export default async ({ url, params }) => {
   const getAccessToken = async () => {
     let accessToken;
-    const accessTokenResult = await fetchAccessToken();
+    const accessTokenResult = fetchAccessToken();
     if (accessTokenResult.isSuccess) {
       accessToken = accessTokenResult.content;
       console.log(`アクセストークンを新規取得: ${accessToken}`);
