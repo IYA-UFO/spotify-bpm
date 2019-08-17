@@ -1,0 +1,60 @@
+{
+  "name": "spotify-bpm",
+  "version": "0.0.1",
+  "description": "Web app to sort and search songs on Spotify by BPM",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "next",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "npm run build && npm run export",
+    "precommit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IYA-UFO/spotify-bpm.git"
+  },
+  "author": "iyama.yuta.spaghetti@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IYA-UFO/spotify-bpm/issues"
+  },
+  "homepage": "https://github.com/IYA-UFO/spotify-bpm#readme",
+  "dependencies": {
+    "babel-eslint": "10.x",
+    "babel-plugin-styled-components": "1.x",
+    "next": "9.x",
+    "react": "16.x",
+    "react-dom": "16.x",
+    "react-spring": "8.x",
+    "styled-components": "4.x"
+  },
+  "devDependencies": {
+    "prettier": "1.x",
+    "eslint": "6.x",
+    "eslint-config-airbnb-base": "14.x",
+    "eslint-config-prettier": "6.x",
+    "eslint-plugin-better-styled-components": "1.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "3.x",
+    "eslint-plugin-react": "7.x"
+  }
+}
