@@ -4,7 +4,7 @@
   "regions": ["hnd1"],
   "builds": [
     {
-      "src": "pages/index.js",
+      "src": "package.json",
       "use": "@now/next"
     }
   ]
