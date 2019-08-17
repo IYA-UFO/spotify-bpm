@@ -4,7 +4,7 @@
   "regions": ["hnd1"],
   "builds": [
     {
-      "src": "next.config.js",
+      "src": "pages/index.js",
       "use": "@now/next"
     }
   ]
