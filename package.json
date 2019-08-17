@@ -50,14 +50,14 @@
     "styled-components": "4.x"
   },
   "devDependencies": {
-    "prettier": "1.x",
-    "eslint": "6.x",
+    "eslint": "5.x",
     "eslint-config-airbnb-base": "14.x",
     "eslint-config-prettier": "6.x",
-    "eslint-plugin-better-styled-components": "1.x",
+    "eslint-plugin-better-styled-components": "^1.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-prettier": "3.x",
-    "eslint-plugin-react": "7.x"
+    "eslint-plugin-react": "7.x",
+    "prettier": "1.x"
   }
 }

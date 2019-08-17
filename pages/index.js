@@ -1,55 +1,58 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import {
-  Box, Card, Image, Heading, Text,
-} from 'rebass';
+import { Box, Card, Image, Heading, Text } from 'rebass';
 
 export default () => {
   const [query, setQuery] = useState('');
   const [artists, setAirtists] = useState([]);
+  const [tracks, setTracks] = useState([]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     console.log('submit');
-    fetch(`/api/spotify/airtist?q=${query}`)
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
+    fetch(`/api/spotify/artists?q=${query}`)
+      .then(res => res.json())
+      .then(json => {
         setAirtists(json);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
     e.preventDefault();
+  };
+
+  const handleAirtistClick = id => {
+    fetch(`/api/spotify/tracks?artistId=${id}`)
+      .then(res => res.json())
+      .then(json => {
+        const tracks = json;
+        console.log(tracks);
+      })
+      .catch(err => {});
   };
 
   return (
     <Wrapper>
       <Title>アーティストを入力</Title>
       <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          value={query}
-          onChange={handleChange} />
-        <Submit
-          type="submit"
-          value="Submit" />
+        <Input type="text" value={query} onChange={handleChange} />
+        <Submit type="submit" value="Submit" />
       </Form>
-      <div>
-        <Code>
-          {artists.map((artist) => {
-            console.log({});
-            return (
-              <div>
-                <p>{artist.name}</p>
-              </div>
-            );
-          })}
-        </Code>
-      </div>
+      <AirtistsWrap>
+        {artists.map(artist => (
+          <div
+            onClick={() => {
+              handleAirtistClick(artist.id);
+            }}
+          >
+            <p>{artist.name}</p>
+          </div>
+        ))}
+      </AirtistsWrap>
+      <TracksWrap></TracksWrap>
     </Wrapper>
   );
 };
@@ -82,6 +85,17 @@ const Submit = styled.input`
   line-height: 30px;
   margin-top: 10px;
   width: 30%;
+`;
+
+const AirtistsWrap = styled.div`
+  max-height: 200px;
+  overflow-y: scroll;
+`;
+
+const TracksWrap = styled.div`
+  background-color: skyblue;
+  max-height: 200px;
+  overflow-y: scroll;
 `;
 
 const Code = styled.pre`

@@ -22,11 +22,15 @@ export default async ({ url, params }) => {
         },
         params,
       });
+      console.log('リクエスト成功');
       return {
         isSuccess: true,
         content: apiResponse.data,
       };
     } catch (error) {
+      console.log('リクエスト失敗');
+      console.log({ error });
+
       return {
         isSuccess: false,
         content: error,
