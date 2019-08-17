@@ -1,1 +1,1 @@
-export default () => <h1>LPリブランディングの実験場makisatochan test3</h1>;
+export default () => <h1>SPOTIFY BPM</h1>;
