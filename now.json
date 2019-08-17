@@ -1,0 +1,11 @@
+{
+  "version": 2,
+
+  "regions": ["hnd1"],
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ]
+}
