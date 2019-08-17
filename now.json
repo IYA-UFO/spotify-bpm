@@ -1,1 +1,10 @@
-{}
+{
+  "build": {
+    "env": {
+      "SPOTIFY": "@spotify"
+    }
+  },
+  "env": {
+    "SPOTIFY": "@spotify"
+  }
+}
