@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default async () => {
   try {
-    const clientId = '731ab5d2412b4279bbea3944891ab09f';
-    const clientSecret = process.env.SPOTIFY;
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
     const params = new URLSearchParams();
     params.append('grant_type', 'client_credentials');
     const apiResponse = await axios.post(
