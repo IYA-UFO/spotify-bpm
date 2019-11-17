@@ -6,6 +6,7 @@ export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
+    const isProduction = process.env.NODE_ENV === 'production';
 
     try {
       ctx.renderPage = () =>
@@ -22,6 +23,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </html>
         ),
+        isProduction,
       };
     } finally {
       sheet.seal();

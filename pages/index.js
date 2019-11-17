@@ -4,8 +4,10 @@ import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styleConfigs/globalStyle';
 import ArtistPicker from '../components/ArtistPicker';
 import SongPicker from '../components/SongPicker';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const Index = () => {
+  const isProduction = process.env.NODE_ENV === 'production';
   // デバッグ用データ
   // const [currentArtist, setCurrentArtist] = useState({
   //   id: '6MDME20pz9RveH9rEXvrOM',
@@ -46,6 +48,7 @@ const Index = () => {
           </RightCol>
         </Row>
       </Wrapper>
+      {isProduction && <GoogleAnalytics />}
     </ThemeProvider>
   );
 };
