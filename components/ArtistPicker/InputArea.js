@@ -30,6 +30,8 @@ const Wrap = styled.div`
   padding: 10px 18px;
   align-items: center;
   justify-content: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 `;
 
 const lineGrad = keyframes`
@@ -48,6 +50,8 @@ const Line = styled.div`
   background: linear-gradient(90deg, #10abff, #1beabd);
   background-size: 200% 100%;
   animation: ${props => (!props.isFocused ? animation : 'none')};
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 `;
 
 const Input = styled.input`

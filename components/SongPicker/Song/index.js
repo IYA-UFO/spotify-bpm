@@ -33,23 +33,24 @@ const Song = ({
 const Wrap = styled.div`
   position: relative;
   display: flex;
+  height: 35px;
+  padding: 3px 9px;
+  font-size: 14px;
+  font-weight: 300;
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  font-weight: 300;
-  font-size: 14px;
-  height: 35px;
-  padding: 3px 9px;
   &:nth-of-type(2n) {
     background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
   }
 `;
 
 const Name = styled.div`
   overflow: hidden;
+  padding-right: 5px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-right: 5px;
 `;
 
 const RightCol = styled.div`

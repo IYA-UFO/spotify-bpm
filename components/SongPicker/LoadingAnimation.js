@@ -38,6 +38,7 @@ const Row = styled.div`
     opacity: 0;
     animation: ${blink} 2s linear ${({ index }) => `0.${index}s`} infinite;
     background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
   }
 `;
 export default LoadingAnimation;
