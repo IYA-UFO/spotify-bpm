@@ -4,6 +4,8 @@ Get list of your favorite artist's songs sorted by BPM(Beats Per Minute)
 
 https://spotify-bpm.now.sh/
 
+![Screen1](https://user-images.githubusercontent.com/18011155/69002800-7c373480-0939-11ea-91f2-477b29c480ab.png)
+
 ### Run locally
 
 clone.
