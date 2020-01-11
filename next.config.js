@@ -1,5 +1,6 @@
 const nextEnv = require('next-env');
 const dotenvLoad = require('dotenv-load');
+const withWorkbox = require('next-workbox');
 
 dotenvLoad();
 
@@ -14,4 +15,25 @@ module.exports = withNextEnv({
 
     return config;
   },
+});
+
+module.exports = withWorkbox({
+  generateBuildId: async () => {
+    return '201901121714';
+  },
+  runtimeCaching: [
+    {
+      urlPattern: /api\/(artists|tracks)/i,
+      handler: 'cacheFirst',
+      options: {
+        matchOptions: {
+          ignoreSearch: true, //ignore access token query
+        },
+      },
+    },
+    {
+      urlPattern: /api\/accessToken/i,
+      handler: 'networkFirst',
+    },
+  ],
 });

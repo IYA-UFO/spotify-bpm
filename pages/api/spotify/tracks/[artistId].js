@@ -1,13 +1,11 @@
-import fetchAccessToken from '../../../../spotifyRequestCreater/fetchAccessToken';
 import fetchAlbumIds from './fetchAlbumIds';
 import fetchTrackIds from './fetchTrackIds';
 import fetchTrackProfiles from './fetchTrackProfiles';
 import fetchTrackFeatures from './fetchTrackFeatures';
 
 export default async (req, res) => {
-  const accessTokenResult = await fetchAccessToken();
-  const accessToken = accessTokenResult.content;
-  const albumIds = await fetchAlbumIds(req.query.artistId, accessToken);
+  const { artistId, accessToken } = req.query;
+  const albumIds = await fetchAlbumIds(artistId, accessToken);
   const trackIds = await fetchTrackIds(albumIds, accessToken);
   const trackProfiles = await fetchTrackProfiles(trackIds, accessToken);
   const trackFeatures = await fetchTrackFeatures(trackIds, accessToken);
@@ -28,5 +26,5 @@ export default async (req, res) => {
     };
   });
 
-  return res.status(200).send(result);
+  res.status(200).send(result);
 };

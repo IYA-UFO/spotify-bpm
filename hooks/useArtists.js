@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-function useArtists(query) {
+function useArtists(query, accessToken) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
     if (!query) {
       setArtists([]);
     } else {
-      fetch(`/api/spotify/artists?q=${query}`)
+      fetch(`/api/spotify/artists/${query}?accessToken=${accessToken}`)
         .then(res => res.json())
         .then(json => {
           const dataArr = json.map(artist => {
@@ -32,7 +32,7 @@ function useArtists(query) {
           throw Error(err);
         });
     }
-  }, [query]);
+  }, [accessToken, query]);
 
   return artists;
 }

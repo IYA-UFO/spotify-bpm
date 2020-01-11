@@ -1,0 +1,21 @@
+{
+  "name": "Spotify BPM",
+  "short_name": "spotify-bpm",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#10abff",
+  "background_color": "#000",
+  "icons": [
+    {
+      "src": "img/icon-192_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

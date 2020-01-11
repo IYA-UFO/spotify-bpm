@@ -8,7 +8,7 @@ export default createGlobalStyle`
 
   body {
   height: 100%;
-  background-color: #ffffff;
+  background-color: #000;
   font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, Helvetica,
     Sans-Serif;
   font-size: 1.4rem;

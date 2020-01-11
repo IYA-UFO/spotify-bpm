@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import StateContext from '../../context/StateContext';
 import styled, { keyframes, css } from 'styled-components';
 
-const InputArea = ({ query, onQueryChange }) => {
+const InputArea = () => {
+  const {
+    state: { query },
+    dispatch,
+  } = useContext(StateContext);
   const [isFocused, setIsFocused] = useState(false);
+
+  const onQueryChange = e => {
+    dispatch({ type: 'SET_QUERY', payload: e.target.value });
+  };
   return (
     <Wrap>
       <Input
         value={query}
-        onChange={e => onQueryChange(e.target.value)}
+        onChange={onQueryChange}
         placeholder="Ed Sheeran"
         onFocus={() => {
           setIsFocused(true);

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
+import StateContext from '../../context/StateContext';
 import { useAudio } from 'react-use';
 // import dummySongs from '../../dummyData/songs';
 import useSongs from '../../hooks/useSongs';
@@ -8,13 +9,18 @@ import Song from './Song';
 import Player from './Player';
 import LoadingAnimation from './LoadingAnimation';
 
-const SongPicker = ({ currentArtist, goBackToAirtistPicker }) => {
+const SongPicker = () => {
+  const {
+    state: { currentArtist, playingSongId },
+    dispatch,
+    accessToken,
+  } = useContext(StateContext);
+
   //曲一覧
-  const songs = useSongs(currentArtist.id);
+  const songs = useSongs(currentArtist.id, accessToken);
   // const songs = dummySongs;
 
   //再生中の曲
-  const [playingSongId, setPlayingSongId] = useState();
   const playingSong = songs.find(song => {
     return song.id === playingSongId;
   });
@@ -26,7 +32,7 @@ const SongPicker = ({ currentArtist, goBackToAirtistPicker }) => {
 
   //曲クリックハンドラー
   const handleSongClick = id => {
-    setPlayingSongId(id);
+    dispatch({ type: 'PLAY_SONG', payload: id });
     audioControls.volume(0.1);
   };
 
@@ -38,7 +44,7 @@ const SongPicker = ({ currentArtist, goBackToAirtistPicker }) => {
   //戻るボタンハンドラー
   const coverRef = React.createRef();
   const handleBackClick = () => {
-    goBackToAirtistPicker();
+    dispatch({ type: 'UNSET_ARTIST' });
     audioRef.current.src = '';
     coverRef.current.scrollTo({
       top: 0,

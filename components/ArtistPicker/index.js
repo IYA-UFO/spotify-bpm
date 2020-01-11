@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import StateContext from '../../context/StateContext';
 import useArtists from '../../hooks/useArtists';
 import InputArea from './InputArea';
 
-const ArtistPicker = ({ setCurrentArtist, currentArtist }) => {
-  const [query, setQuery] = useState('');
-  const artists = useArtists(query);
+const ArtistPicker = () => {
+  const {
+    state: { query, isSongView },
+    dispatch,
+    accessToken,
+  } = useContext(StateContext);
+  const artists = useArtists(query, accessToken);
+
   return (
     <>
-      <InputArea query={query} onQueryChange={setQuery} />
+      <InputArea />
       <Wrap>
-        <ArtistsWrap currentArtist={currentArtist}>
+        <ArtistsWrap isSongView={isSongView}>
           {artists.map((artist, index) => {
             return (
               <Artist
                 key={index}
                 onClick={() => {
-                  setCurrentArtist(artist);
+                  dispatch({ type: 'SET_ARTIST', payload: artist });
                 }}
               >
                 <h3>{artist.name}</h3>
@@ -37,8 +43,7 @@ const Wrap = styled.div`
 `;
 
 const ArtistsWrap = styled.div`
-  overflow-y: ${({ currentArtist }) =>
-    currentArtist.id ? 'hidden' : 'scroll-y'};
+  overflow-y: ${({ isSongView }) => (isSongView ? 'hidden' : 'scroll')};
   width: 100%;
   height: calc(100vh - 65px);
   padding: 10px 20px;

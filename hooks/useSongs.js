@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-function useArtists(artistId) {
+function useSongs(artistId, accessToken) {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     if (!artistId) {
       setSongs([]);
     } else {
-      fetch(`/api/spotify/tracks?artistId=${artistId}`)
+      fetch(`/api/spotify/tracks/${artistId}?accessToken=${accessToken}`)
         .then(res => res.json())
         .then(json => {
           let songArr = json;
@@ -31,9 +31,9 @@ function useArtists(artistId) {
           throw Error(err);
         });
     }
-  }, [artistId]);
+  }, [accessToken, artistId]);
 
   return songs;
 }
 
-export default useArtists;
+export default useSongs;

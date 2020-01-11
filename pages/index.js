@@ -1,55 +1,36 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
+import React, { useContext, useReducer } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import StateContext from '../context/StateContext';
+import stateReducer from '../context/reducer';
+import useAccessToken from '../hooks/useAccessToken';
 import GlobalStyle from '../styleConfigs/globalStyle';
 import ArtistPicker from '../components/ArtistPicker';
 import SongPicker from '../components/SongPicker';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const Index = () => {
+  const initialState = useContext(StateContext);
+  const [state, dispatch] = useReducer(stateReducer, initialState);
   const isProduction = process.env.NODE_ENV === 'production';
-  // デバッグ用データ
-  // const [currentArtist, setCurrentArtist] = useState({
-  //   id: '6MDME20pz9RveH9rEXvrOM',
-  //   image: 'https://i.scdn.co/image/08a4e4c0edda46a1ab4c9ee851f8fa567741d7e6',
-  //   name: 'Clean Bandit',
-  // });
-
-  const [currentArtist, setCurrentArtist] = useState({});
-  const isSongView = Boolean(currentArtist.id);
-
-  const goBackToAirtistPicker = () => {
-    setCurrentArtist({});
-  };
+  const accessToken = useAccessToken();
 
   return (
-    <ThemeProvider theme={{ isSongView }}>
-      <Head>
-        <title key="title">Spotify BPM</title>
-        <meta name="description" content="Sort spotify&lsquo;s songs by BPM" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-      <GlobalStyle />
-      <Wrapper>
-        <Row>
-          <LeftCol>
-            <ArtistPicker
-              setCurrentArtist={artist => {
-                setCurrentArtist(artist);
-              }}
-              currentArtist={currentArtist}
-            />
-          </LeftCol>
-          <RightCol>
-            <SongPicker
-              currentArtist={currentArtist}
-              goBackToAirtistPicker={goBackToAirtistPicker}
-            />
-          </RightCol>
-        </Row>
-      </Wrapper>
-      {isProduction && <GoogleAnalytics />}
-    </ThemeProvider>
+    <StateContext.Provider value={{ state, dispatch, accessToken }}>
+      <ThemeProvider theme={{ isSongView: state.isSongView }}>
+        <GlobalStyle />
+        <Wrapper>
+          <Row>
+            <LeftCol>
+              <ArtistPicker />
+            </LeftCol>
+            <RightCol>
+              <SongPicker />
+            </RightCol>
+          </Row>
+        </Wrapper>
+        {isProduction && <GoogleAnalytics />}
+      </ThemeProvider>
+    </StateContext.Provider>
   );
 };
 
