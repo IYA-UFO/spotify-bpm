@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import StateContext from '../../context/StateContext';
 import { useAudio } from 'react-use';
-// import dummySongs from '../../dummyData/songs';
-import useSongs from '../../hooks/useSongs';
-
+import StateContext from 'app/context/StateContext';
+import useSongs from 'app/hooks/useSongs';
 import Song from './Song';
 import Player from './Player';
 import LoadingAnimation from './LoadingAnimation';
@@ -18,7 +16,6 @@ const SongPicker = () => {
 
   //曲一覧
   const songs = useSongs(currentArtist.id, accessToken);
-  // const songs = dummySongs;
 
   //再生中の曲
   const playingSong = songs.find(song => {
@@ -59,45 +56,40 @@ const SongPicker = () => {
   }, []);
 
   return (
-    <>
-      <Wrap innerHeight={innerHeight}>
-        {/* {currentArtist.id && audio} */}
-        {audio}
-        <BackBtn
-          onClick={handleBackClick}
-          aria-label="go back to picking artist"
+    <Wrap innerHeight={innerHeight}>
+      {audio}
+      <BackBtn
+        onClick={handleBackClick}
+        aria-label="go back to picking artist"
+      />
+      <Image image={currentArtist.image} />
+      <Cover ref={coverRef}>
+        <Content>
+          <Name>{currentArtist.name}</Name>
+          {songs.length > 0 ? (
+            <SongsWrap>
+              {songs.map(song => (
+                <Song
+                  key={song.id}
+                  {...song}
+                  handleSongClick={handleSongClick}
+                  isPlaying={playingSongId === song.id && audioState.isPlaying}
+                />
+              ))}
+            </SongsWrap>
+          ) : (
+            <LoadingAnimation />
+          )}
+        </Content>
+      </Cover>
+      <PlayerWrap>
+        <Player
+          isPlaying={isPlaying}
+          playingSong={playingSong}
+          handlePlayBtnClick={handlePlayBtnClick}
         />
-        <Image image={currentArtist.image} />
-        <Cover ref={coverRef}>
-          <Content>
-            <Name>{currentArtist.name}</Name>
-            {songs.length > 0 ? (
-              <SongsWrap>
-                {songs.map(song => (
-                  <Song
-                    key={song.id}
-                    {...song}
-                    handleSongClick={handleSongClick}
-                    isPlaying={
-                      playingSongId === song.id && audioState.isPlaying
-                    }
-                  />
-                ))}
-              </SongsWrap>
-            ) : (
-              <LoadingAnimation />
-            )}
-          </Content>
-        </Cover>
-        <PlayerWrap>
-          <Player
-            isPlaying={isPlaying}
-            playingSong={playingSong}
-            handlePlayBtnClick={handlePlayBtnClick}
-          />
-        </PlayerWrap>
-      </Wrap>
-    </>
+      </PlayerWrap>
+    </Wrap>
   );
 };
 

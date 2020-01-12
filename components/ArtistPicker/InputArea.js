@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import StateContext from '../../context/StateContext';
 import styled, { keyframes, css } from 'styled-components';
+import StateContext from 'app/context/StateContext';
 
 const InputArea = () => {
   const {

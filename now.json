@@ -10,7 +10,7 @@
     "SPOTIFY_CLIENT_SECRET": "@spotify_client_secret"
   },
   "routes": [
-    { "src": "/sw.js", "dest": "_next/static/201901121714/pages/sw.js" }
+    { "src": "/sw.js", "dest": "_next/static/201901121930/pages/sw.js" }
   ],
   "builds": [{ "src": "next.config.js", "use": "@now/next" }]
 }

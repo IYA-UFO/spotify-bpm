@@ -1,15 +1,14 @@
 {
   "name": "spotify-bpm",
-  "version": "1.0.0",
-  "description": "Web app to sort and search songs on Spotify by BPM",
+  "version": "1.1.0",
+  "description": "Web app to search songs on Spotify and sort by BPM",
   "main": "pages/index.js",
   "scripts": {
     "start": "next",
     "build": "next build",
     "export": "next export",
     "deploy": "npm run build && npm run export",
-    "precommit": "lint-staged",
-    "copySW": "cp .next/service-worker.js out/service-worker.js && cp .next/precache* out/"
+    "precommit": "lint-staged"
   },
   "engines": {
     "node": "12.x"

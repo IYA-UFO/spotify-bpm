@@ -72,4 +72,7 @@ const Beat = styled.div`
   text-align: right;
 `;
 
-export default Song;
+export default React.memo(
+  Song,
+  (prevProps, nextProps) => prevProps.isPlaying === nextProps.isPlaying,
+);

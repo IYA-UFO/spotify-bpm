@@ -12,14 +12,18 @@ module.exports = withNextEnv({
     config.node = {
       fs: 'empty',
     };
-
     return config;
   },
 });
 
 module.exports = withWorkbox({
+  webpack: config => {
+    // import things with absolute path
+    config.resolve.alias['app'] = __dirname;
+    return config;
+  },
   generateBuildId: async () => {
-    return '201901121714';
+    return '201901121930';
   },
   runtimeCaching: [
     {

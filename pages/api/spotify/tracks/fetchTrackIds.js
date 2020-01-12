@@ -1,4 +1,4 @@
-import SpotifyRequestCreater from '../../../../spotifyRequestCreater';
+import SpotifyRequestCreater from 'app/spotifyRequestCreater';
 
 export default async (albumIds, accessToken) => {
   console.log('Fetching track ids....');

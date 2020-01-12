@@ -1,4 +1,4 @@
-import SpotifyRequestCreater from '../../../../spotifyRequestCreater';
+import SpotifyRequestCreater from 'app/spotifyRequestCreater';
 
 export default async (req, res) => {
   console.log('Fetching airtists....');

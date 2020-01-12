@@ -1,5 +1,5 @@
-import SpotifyRequestCreater from '../../../../spotifyRequestCreater';
-import createChunkedArr from '../../../../util/createChunkedArr';
+import SpotifyRequestCreater from 'app/spotifyRequestCreater';
+import createChunkedArr from 'app/util/createChunkedArr';
 
 export default async (trackIds, accessToken) => {
   console.log('Fetching information of tracks....');

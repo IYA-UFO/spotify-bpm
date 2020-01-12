@@ -4,7 +4,6 @@ function useAccessToken() {
   const [accessToken, setAccessToken] = useState('');
 
   useEffect(() => {
-    // fetch(`/api/spotify/accessToken?time=${Date.now()}`)
     fetch(`/api/spotify/accessToken`)
       .then(res => res.json())
       .then(json => {

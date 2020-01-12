@@ -10,6 +10,7 @@ function useSongs(artistId, accessToken) {
       fetch(`/api/spotify/tracks/${artistId}?accessToken=${accessToken}`)
         .then(res => res.json())
         .then(json => {
+          console.log({ json });
           let songArr = json;
           songArr.sort((songA, songB) => {
             return songA.bpm - songB.bpm;
