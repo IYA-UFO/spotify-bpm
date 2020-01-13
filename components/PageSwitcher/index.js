@@ -11,7 +11,7 @@ const PageSwitcher = ({ pages }) => {
 
   return (
     <Wrapper>
-      <Row rowWidth={rowWidth} pageIndex={pageIndex} pageCount={pageCount}>
+      <Row rowWidth={rowWidth} pageIndex={pageIndex}>
         {pages.map((page, index) => (
           <Col key={index} index={index} isActive={index === pageIndex}>
             {page}
@@ -36,11 +36,11 @@ const Wrapper = styled.div`
 `;
 
 const Row = styled.div`
-  width: ${({ rowWidth }) => rowWidth};
-  transform: ${({ pageIndex, pageCount }) =>
-    `translateX(calc(-${((pageIndex - 1) * 100) / pageCount}%))`}
-  transition: transform 0.8s;
-  will-change: transform;
+  width: 300vw;
+  /* transform: ${({ pageIndex }) => `left(${(1 - pageIndex) * 100}vw)`}; */
+  margin-left: ${({ pageIndex }) => `${(1 - pageIndex) * 100}vw`};
+  transition: margin 0.5s;
+  will-change:margin;
   display: flex;
   flex-direction: row;
 `;

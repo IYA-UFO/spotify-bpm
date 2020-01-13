@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import StateContext from 'app/context/StateContext';
+import Loupe from './Loupe';
 
 const InputArea = () => {
   const {
@@ -14,10 +15,11 @@ const InputArea = () => {
   };
   return (
     <Wrap>
+      <Loupe />
       <Input
         value={query}
         onChange={onQueryChange}
-        placeholder="Ed Sheeran"
+        placeholder="Artist's name"
         onFocus={() => {
           setIsFocused(true);
         }}
@@ -26,7 +28,6 @@ const InputArea = () => {
         }}
         aria-label="input artist name"
       />
-      <Loupe />
       <Line isFocused={isFocused} />
     </Wrap>
   );
@@ -85,18 +86,6 @@ const Input = styled.input`
   &::placeholder {
     color: #666;
   }
-`;
-
-const Loupe = styled.div`
-  position: absolute;
-  z-index: 2;
-  top: 20px;
-  left: 28px;
-  width: 20px;
-  height: 20px;
-  background-image: url('/img/loupe.png');
-  background-size: contain;
-  opacity: 0.3;
 `;
 
 export default InputArea;
