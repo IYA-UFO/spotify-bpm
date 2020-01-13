@@ -1,13 +1,20 @@
 const getStateDiff = action => {
   switch (action.type) {
+    case 'START':
+      return {
+        pageIndex: 2,
+      };
+
     case 'SET_ARTIST':
       return {
         currentArtist: action.payload,
+        pageIndex: 3,
       };
 
     case 'UNSET_ARTIST':
       return {
         currentArtist: {},
+        pageIndex: 2,
       };
 
     case 'SET_QUERY':

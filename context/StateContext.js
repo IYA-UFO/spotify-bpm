@@ -5,6 +5,7 @@ const InitialState = React.createContext({
   query: '',
   playingSongId: '',
   isSongView: false,
+  pageIndex: 1,
 });
 
 export default InitialState;

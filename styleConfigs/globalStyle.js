@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+@font-face {
+   font-family: "Righteous";
+   src: url('/font/righteous.woff2') format("woff2");
+}
 
   html {
     height: 100%;

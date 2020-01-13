@@ -4,7 +4,7 @@ function useArtists(query, accessToken) {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    if (!query) {
+    if (!query || query.length <= 2) {
       setArtists([]);
     } else {
       fetch(`/api/spotify/artists/${query}?accessToken=${accessToken}`)

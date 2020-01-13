@@ -23,7 +23,7 @@ module.exports = withWorkbox({
     return config;
   },
   generateBuildId: async () => {
-    return '201901121930';
+    return '2019-01-13-2210';
   },
   runtimeCaching: [
     {
@@ -32,6 +32,10 @@ module.exports = withWorkbox({
       options: {
         matchOptions: {
           ignoreSearch: true, //ignore access token query
+        },
+        cacheName: 'artist and track data',
+        expiration: {
+          maxEntries: 1000,
         },
       },
     },

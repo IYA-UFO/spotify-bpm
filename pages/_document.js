@@ -34,6 +34,14 @@ export default class MyDocument extends Document {
     return (
       <html lang="en-US">
         <Head>
+          <link
+            rel="preload"
+            href="font/righteous.woff2"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+          />
+          <link rel="preload" href="img/metronome.png" as="image" />
           <title key="title">Spotify BPM</title>
           <meta
             name="description"
