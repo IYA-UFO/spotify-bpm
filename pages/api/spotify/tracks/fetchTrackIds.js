@@ -4,10 +4,7 @@ export default async (albumIds, accessToken) => {
   console.log('Fetching track ids....');
 
   const response = await SpotifyRequestCreater({
-    url: 'https://api.spotify.com/v1/albums',
-    params: {
-      ids: albumIds.join(','),
-    },
+    url: `https://api.spotify.com/v1/albums?ids=${albumIds.join(',')}`,
     accessToken,
   });
 
