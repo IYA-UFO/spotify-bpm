@@ -1,4 +1,4 @@
-import SpotifyRequestCreater from 'app/spotifyRequestCreater';
+import SpotifyRequestCreater from 'spotifyRequestCreater';
 
 export default async (albumIds, accessToken) => {
   console.log('Fetching track ids....');
@@ -13,8 +13,8 @@ export default async (albumIds, accessToken) => {
 
   if (response.isSuccess) {
     const trackIds = [];
-    response.content.albums.forEach(album => {
-      album.tracks.items.forEach(track => {
+    response.content.albums.forEach((album) => {
+      album.tracks.items.forEach((track) => {
         trackIds.push(track.id);
       });
     });

@@ -1,10 +1,10 @@
-import React from 'react';
+import NextScript from 'next/script';
 
 const GoogleAnalytics = () => (
   <>
-    <script
-      async
+    <NextScript
       src="https://www.googletagmanager.com/gtag/js?id=UA-68022202-4"
+      strategy="afterInteractive"
     />
     <script
       dangerouslySetInnerHTML={{

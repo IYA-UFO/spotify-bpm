@@ -1,14 +1,15 @@
 import React, { useContext, useReducer } from 'react';
-import StateContext from 'app/context/StateContext';
-import stateReducer from 'app/context/reducer';
-import useAccessToken from 'app/hooks/useAccessToken';
-import GlobalStyle from 'app/styleConfigs/globalStyle';
-import ArtistPicker from 'app/components/ArtistPicker';
-import SongPicker from 'app/components/SongPicker';
-import Introduction from 'app/components/Introduction';
+import NextHead from 'next/head';
+import StateContext from 'context/StateContext';
+import stateReducer from 'context/reducer';
+import useAccessToken from 'hooks/useAccessToken';
+import GlobalStyle from 'styleConfigs/globalStyle';
+import ArtistPicker from 'components/ArtistPicker';
+import SongPicker from 'components/SongPicker';
+import Introduction from 'components/Introduction';
 
-import PageSwitcher from 'app/components/PageSwitcher';
-import GoogleAnalytics from 'app/components/GoogleAnalytics';
+import PageSwitcher from 'components/PageSwitcher';
+import GoogleAnalytics from 'components/GoogleAnalytics';
 
 const Index = () => {
   const initialState = useContext(StateContext);
@@ -18,6 +19,9 @@ const Index = () => {
 
   return (
     <StateContext.Provider value={{ state, dispatch, accessToken }}>
+      <NextHead>
+        <title key="title">Spotify BPM</title>
+      </NextHead>
       <GlobalStyle />
       <PageSwitcher
         pages={[

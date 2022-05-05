@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useAudio } from 'react-use';
-import StateContext from 'app/context/StateContext';
-import useSongs from 'app/hooks/useSongs';
+import StateContext from 'context/StateContext';
+import useSongs from 'hooks/useSongs';
 import Song from './Song';
 import Player from './Player';
 import LoadingAnimation from './LoadingAnimation';
@@ -18,7 +18,7 @@ const SongPicker = () => {
   const songs = useSongs(currentArtist.id, accessToken);
 
   //再生中の曲
-  const playingSong = songs.find(song => {
+  const playingSong = songs.find((song) => {
     return song.id === playingSongId;
   });
   const [audio, audioState, audioControls, audioRef] = useAudio({
@@ -28,7 +28,7 @@ const SongPicker = () => {
   const isPlaying = Boolean(playingSongId && audioState.isPlaying);
 
   //曲クリックハンドラー
-  const handleSongClick = id => {
+  const handleSongClick = (id) => {
     dispatch({ type: 'PLAY_SONG', payload: id });
     audioControls.volume(0.1);
   };
@@ -62,13 +62,13 @@ const SongPicker = () => {
         onClick={handleBackClick}
         aria-label="go back to picking artist"
       />
-      <Image image={currentArtist.image} />
+      <Image image={currentArtist.image} alt="" />
       <Cover ref={coverRef}>
         <Content>
           <Name>{currentArtist.name}</Name>
           {songs.length > 0 ? (
             <SongsWrap>
-              {songs.map(song => (
+              {songs.map((song) => (
                 <Song
                   key={song.id}
                   {...song}

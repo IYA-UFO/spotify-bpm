@@ -1,5 +1,4 @@
 import React from 'react';
-
 const InitialState = React.createContext({
   currentArtist: {},
   query: '',
