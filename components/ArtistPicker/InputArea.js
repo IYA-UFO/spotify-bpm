@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import StateContext from 'app/context/StateContext';
+import StateContext from 'context/StateContext';
 import Loupe from './Loupe';
 
 const InputArea = () => {
@@ -10,7 +10,7 @@ const InputArea = () => {
   } = useContext(StateContext);
   const [isFocused, setIsFocused] = useState(false);
 
-  const onQueryChange = e => {
+  const onQueryChange = (e) => {
     dispatch({ type: 'SET_QUERY', payload: e.target.value });
   };
   return (
@@ -59,7 +59,7 @@ const Line = styled.div`
   height: 3px;
   background: linear-gradient(90deg, #10abff, #1beabd);
   background-size: 200% 100%;
-  animation: ${props => (!props.isFocused ? animation : 'none')};
+  animation: ${(props) => (!props.isFocused ? animation : 'none')};
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 `;

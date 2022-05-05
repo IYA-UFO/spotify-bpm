@@ -1,6 +1,6 @@
-import SpotifyRequestCreater from 'app/spotifyRequestCreater';
+import SpotifyRequestCreater from 'spotifyRequestCreater';
 
-export default async (req, res) => {
+const fetchArtists = async (req, res) => {
   console.log('Fetching airtists....');
 
   const { queryString, accessToken } = req.query;
@@ -16,3 +16,4 @@ export default async (req, res) => {
 
   res.status(200).json(apiResponse.content.artists.items);
 };
+export default fetchArtists;

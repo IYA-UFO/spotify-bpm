@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Metronome from './Metronome';
-import StateContext from 'app/context/StateContext';
+import StateContext from 'context/StateContext';
 
 const Introduction = () => {
   const { dispatch } = useContext(StateContext);
@@ -13,9 +13,9 @@ const Introduction = () => {
       </MetronomeWrap>
       <Heading>Spotify BPM</Heading>
       <Subhead>
-        Get your favorite songs sorted by BPM　
+        Get your favorite songs sorted by BPM
         <br />
-        (Peat per minutes)
+        (Beat per minutes)
       </Subhead>
       <Text></Text>
       <Go

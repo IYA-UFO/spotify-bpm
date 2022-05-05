@@ -1,5 +1,4 @@
-import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript, Html } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -11,7 +10,8 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en-US">
+      <Html lang="en-US">
         <Head>
           <link
             rel="preload"
@@ -42,15 +42,11 @@ export default class MyDocument extends Document {
             type="font/woff2"
           />
           <link rel="preload" href="img/metronome.png" as="image" />
-          <title key="title">Spotify BPM</title>
           <meta
             name="description"
             content="Sort spotify&lsquo;s songs by BPM"
           />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
+
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="preconnect" href="https://storage.googleapis.com" />
           <link rel="manifest" href="/manifest.json" />
@@ -65,11 +61,6 @@ export default class MyDocument extends Document {
             content="black-translucent"
           />
           <meta name="msapplication-starturl" content="/" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-
           <link
             rel="icon"
             type="image/png"
@@ -100,7 +91,7 @@ export default class MyDocument extends Document {
           <NextScript />
           <noscript>You need JavaScript to use this</noscript>
         </body>
-      </html>
+      </Html>
     );
   }
 }

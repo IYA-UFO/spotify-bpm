@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import StateContext from 'app/context/StateContext';
-import useArtists from 'app/hooks/useArtists';
+import StateContext from 'context/StateContext';
+import useArtists from 'hooks/useArtists';
 import InputArea from './InputArea';
 
 const ArtistPicker = () => {
@@ -17,7 +17,7 @@ const ArtistPicker = () => {
       <InputArea />
       <Wrap>
         <ArtistsWrap isSongView={isSongView}>
-          {artists.map(artist => (
+          {artists.map((artist) => (
             <Artist
               key={artist.id}
               onClick={() => {

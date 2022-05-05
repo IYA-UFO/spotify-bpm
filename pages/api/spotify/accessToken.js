@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export default async (req, res) => {
+const accessToken = async (req, res) => {
+  console.log(process.env.SPOTIFY_CLIENT_ID);
   const clientId = process.env.SPOTIFY_CLIENT_ID;
   const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
   const params = new URLSearchParams();
@@ -21,3 +22,4 @@ export default async (req, res) => {
   res.setHeader('Cache-Control', `max-age=0, s-maxage=0`);
   res.status(200).json({ token: apiResponse.data.access_token });
 };
+export default accessToken;

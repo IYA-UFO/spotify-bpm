@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import StateContext from 'app/context/StateContext';
+import StateContext from 'context/StateContext';
 
 const PageSwitcher = ({ pages }) => {
   const {
@@ -40,7 +40,7 @@ const Row = styled.div`
   /* transform: ${({ pageIndex }) => `left(${(1 - pageIndex) * 100}vw)`}; */
   margin-left: ${({ pageIndex }) => `${(1 - pageIndex) * 100}vw`};
   transition: margin 0.5s;
-  will-change:margin;
+  will-change: margin;
   display: flex;
   flex-direction: row;
 `;

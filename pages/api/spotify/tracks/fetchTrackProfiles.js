@@ -1,12 +1,12 @@
-import SpotifyRequestCreater from 'app/spotifyRequestCreater';
-import createChunkedArr from 'app/util/createChunkedArr';
+import SpotifyRequestCreater from 'spotifyRequestCreater';
+import createChunkedArr from 'util/createChunkedArr';
 
 export default async (trackIds, accessToken) => {
   console.log('Fetching information of tracks....');
 
   const chunkedIdArr = createChunkedArr(trackIds, 50);
 
-  const getTrackProfilesForChunk = async idChunk => {
+  const getTrackProfilesForChunk = async (idChunk) => {
     const apiResponse = await SpotifyRequestCreater({
       url: 'https://api.spotify.com/v1/tracks',
       params: {
@@ -16,7 +16,7 @@ export default async (trackIds, accessToken) => {
     });
 
     if (apiResponse.isSuccess) {
-      return apiResponse.content.tracks.map(track => {
+      return apiResponse.content.tracks.map((track) => {
         return {
           id: track.id,
           name: track.name,
@@ -26,13 +26,13 @@ export default async (trackIds, accessToken) => {
     }
   };
 
-  const requests = chunkedIdArr.map(idChunk => {
+  const requests = chunkedIdArr.map((idChunk) => {
     return getTrackProfilesForChunk(idChunk);
   });
 
-  return Promise.all(requests).then(results => {
+  return Promise.all(requests).then((results) => {
     let profileArr = [];
-    results.forEach(chunkResult => {
+    results.forEach((chunkResult) => {
       profileArr = profileArr.concat(chunkResult);
     });
     return profileArr;

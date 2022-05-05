@@ -1,4 +1,4 @@
-import SpotifyRequestCreater from 'app/spotifyRequestCreater/index.js';
+import SpotifyRequestCreater from 'spotifyRequestCreater/index.js';
 
 export default async (artistId, accessToken) => {
   console.log('Fetching album ids....');
@@ -12,7 +12,7 @@ export default async (artistId, accessToken) => {
   });
 
   if (response.isSuccess) {
-    const ids = response.content.items.map(item => item.id);
+    const ids = response.content.items.map((item) => item.id);
     return ids;
   }
   throw Error(response);
