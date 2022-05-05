@@ -25,7 +25,7 @@ const SongPicker = () => {
     src: playingSong && playingSong.previewUrl,
     autoPlay: true,
   });
-  const isPlaying = Boolean(playingSongId && audioState.isPlaying);
+  const isPlaying = Boolean(playingSongId && audioState.playing);
 
   //曲クリックハンドラー
   const handleSongClick = (id) => {
@@ -35,7 +35,7 @@ const SongPicker = () => {
 
   //再生パネルハンドラー
   const handlePlayBtnClick = () => {
-    audioState.isPlaying ? audioControls.pause() : audioControls.play();
+    audioState.playing ? audioControls.pause() : audioControls.play();
   };
 
   //戻るボタンハンドラー
@@ -73,7 +73,7 @@ const SongPicker = () => {
                   key={song.id}
                   {...song}
                   handleSongClick={handleSongClick}
-                  isPlaying={playingSongId === song.id && audioState.isPlaying}
+                  isPlaying={playingSongId === song.id && audioState.playing}
                 />
               ))}
             </SongsWrap>
@@ -99,7 +99,7 @@ const Wrap = styled.div`
   flex-direction: column;
   height: ${({ innerHeight }) => `${innerHeight}px`};
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 `;
 
 const BackBtn = styled.button`
@@ -136,7 +136,6 @@ const Cover = styled.div`
 const Content = styled.div`
   position: relative;
   width: 100%;
-  min-height: 700px;
   padding-top: 250px;
   background: linear-gradient(
     180deg,

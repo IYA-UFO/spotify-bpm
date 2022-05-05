@@ -17,7 +17,6 @@ const Introduction = () => {
         <br />
         (Beat per minutes)
       </Subhead>
-      <Text></Text>
       <Go
         onClick={() => {
           dispatch({ type: 'START' });
@@ -42,9 +41,6 @@ const MetronomeWrap = styled.div`
 const Heading = styled.h1`
   font-family: 'Righteous';
   text-align: center;
-  /* filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.3))
-    drop-shadow(0 0 40px rgba(27, 234, 189, 0.6))
-    drop-shadow(0 0 100px rgba(27, 234, 189, 0.6)); */
 `;
 
 const Subhead = styled.h2`
@@ -54,8 +50,6 @@ const Subhead = styled.h2`
   font-family: 'Righteous';
   text-align: center;
 `;
-
-const Text = styled.p``;
 
 const Go = styled.p`
   font-family: 'Righteous';

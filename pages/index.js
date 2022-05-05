@@ -29,7 +29,6 @@ const Index = () => {
           <ArtistPicker key="page2" />,
           <SongPicker key="page3" />,
         ]}
-        page
       />
       {isProduction && <GoogleAnalytics />}
     </StateContext.Provider>

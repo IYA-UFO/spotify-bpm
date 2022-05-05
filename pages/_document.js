@@ -44,9 +44,13 @@ export default class MyDocument extends Document {
           <link rel="preload" href="img/metronome.png" as="image" />
           <meta
             name="description"
-            content="Sort spotify&lsquo;s songs by BPM"
+            content="Sort Spotify&lsquo;s songs by BPM. Good for composer and drummer looking for idea"
           />
-
+          <link
+            key="canonical"
+            rel="canonical"
+            href="https://spotify-bpm.vercel.app"
+          ></link>
           <link rel="preconnect" href="https://www.google-analytics.com" />
           <link rel="preconnect" href="https://storage.googleapis.com" />
           <link rel="manifest" href="/manifest.json" />
