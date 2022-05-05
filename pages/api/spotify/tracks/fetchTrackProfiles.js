@@ -8,10 +8,7 @@ export default async (trackIds, accessToken) => {
 
   const getTrackProfilesForChunk = async (idChunk) => {
     const apiResponse = await SpotifyRequestCreater({
-      url: 'https://api.spotify.com/v1/tracks',
-      params: {
-        ids: idChunk.join(','),
-      },
+      url: `https://api.spotify.com/v1/tracks?ids=${idChunk.join(',')}`,
       accessToken,
     });
 

@@ -8,11 +8,8 @@ export default async (trackIds, accessToken) => {
 
   const getTrackFeatureForChunk = async (idChunk) => {
     const response = await SpotifyRequestCreater({
-      url: 'https://api.spotify.com/v1/audio-features',
+      url: `https://api.spotify.com/v1/audio-features?ids=${idChunk.join(',')}`,
       accessToken,
-      params: {
-        ids: idChunk.join(','),
-      },
     });
     if (response.isSuccess) {
       return response.content.audio_features.map((track, index) => {

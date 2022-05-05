@@ -1,17 +1,17 @@
-import axios from 'axios';
-
-export default async ({ url, params, accessToken }) => {
+export default async ({ url, accessToken }) => {
   try {
-    const apiResponse = await axios.get(url, {
+    const apiResponse = await fetch(url, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-      params,
     });
+    const apiData = await apiResponse.json();
+    console.log({ apiData });
     console.log(`Spotify API request SUCCESS | ${url}`);
     return {
       isSuccess: true,
-      content: apiResponse.data,
+      content: apiData,
     };
   } catch (error) {
     console.log(`Spotify API request FAIL | ${url}`);
