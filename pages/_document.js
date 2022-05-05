@@ -93,7 +93,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <noscript>You need JavaScript to use this</noscript>
+          <noscript>You need JavaScript to use this!</noscript>
         </body>
       </Html>
     );
